@@ -1,0 +1,36 @@
+proc start {m} {vsim -L unisims_ver -L unimacro_ver -L xilinxcorelib_ver -L secureip work.glbl $m}
+set MODULE GPUtestbench
+# GPUtestbench
+start $MODULE
+# vsim -L unisims_ver -L unimacro_ver -L xilinxcorelib_ver -L secureip work.glbl GPUtestbench 
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 1 FSM in module "GPU(fast)".
+# //  ModelSim SE-64 10.1b_2 Jul  3 2012 Linux 2.6.32-279.5.1.el6.centos.plus.x86_64
+# //
+# //  Copyright 1991-2012 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Loading work.glbl(fast)
+# Loading work.GPUtestbench(fast)
+# Loading work.GPU(fast)
+# Loading work.vram(fast)
+# Loading work.PixelFeeder(fast)
+# Loading work.pixel_fifo(fast)
+# Loading work.FakeDVI(fast)
+add wave $MODULE/*
+add wave $MODULE/GPU/*
+add wave $MODULE/DVI/*
+run 100000ms
+# Hello! Resetting...
+# WARNING: Behavioral models for independent clock FIFO configurations do not model synchronization delays. The behavioral models are functionally correct, and will represent the behavior of the configured FIFO. See the FIFO Generator User Guide for more information.
+# Finished reset.
+# Finished WaitScreen().
+# Creating frame000.hex...
+# Sent swap command.
+# Waiting for GPU...
+# FAIL: GPU took too long to finish.
